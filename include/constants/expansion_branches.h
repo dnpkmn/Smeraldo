@@ -8,5 +8,6 @@
 
 #define BATTLE_ENGINE
 #define ITEM_EXPANSION
+#define POKEMON_EXPANSION
 
 #endif
