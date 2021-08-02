@@ -1,28 +1,28 @@
 gText_WouldYouLikeToRestYourPkmn:: @ 82726EB
-    .string "Hello, and welcome to\n"
-    .string "the POKéMON CENTER.\p"
-    .string "We restore your tired POKéMON\n"
-    .string "to full health.\p"
-    .string "Would you like to rest your POKéMON?$"
+    .string "Ciao, ti do il benvenuto\n"
+    .string "al Centro Pokémon.\p"
+    .string "Riportiamo i tuoi pokémon\n"
+    .string "al pieno delle loro forze.\p"
+    .string "Vorresti far riposare i tuoi Pokémon?$"
 
 gText_IllTakeYourPkmn:: @ 8272768
-    .string "Okay, I'll take your POKéMON\n"
-    .string "for a few seconds.$"
+    .string "Va bene, prenderò i tuoi Pokémon\n"
+    .string "per qualche secondo.$"
 
 gText_RestoredPkmnToFullHealth:: @ 8272798
-    .string "Thank you for waiting.\p"
-    .string "We've restored your POKéMON\n"
-    .string "to full health.$"
+    .string "Grazie per l'attesa.\p"
+    .string "I tuoi Pokémon sono in\n"
+    .string "perfetta salute.$"
 
 gText_WeHopeToSeeYouAgain:: @ 82727DB
-    .string "We hope to see you again!$"
+    .string "Siamo sempre a disposizione!$"
 
 gText_WelcomeCutShort:: @ 82727F5
-    .string "Hello, and welcome to\n"
-    .string "the POKéMON CENTER.\p"
-    .string "We restore your tired POKéMON\n"
-    .string "to full health.\p"
-    .string "Would you like to…$"
+    .string "Ciao, benvenuto\n"
+    .string "al Centro Pokémon.\p"
+    .string "Riportiamo i tuoi pokémon\n"
+    .string "al pieno delle loro forze.\p"
+    .string "Vorresti far riposare i tuoi Pokémon?…$"
 
 gText_NoticesGoldCard:: @ 8272860
     .string "Th-that card…\n"
@@ -41,11 +41,11 @@ gText_YouWantTheUsual:: @ 8272982
     .string "You want the usual, am I right?$"
 
 gText_IllTakeYourPkmn2:: @ 82729C0
-    .string "Okay, I'll take your POKéMON\n"
-    .string "for a few seconds.$"
+    .string "Okay, prenderò i tuoi Pokémon\n"
+    .string "per qualche secondo.$"
 
 gText_ThankYouForWaiting:: @ 82729F0
-    .string "Thank you for waiting.$"
+    .string "Grazie per l'attesa.$"
 
 gText_WeHopeToSeeYouAgain2:: @ 8272A07
-    .string "We hope to see you again!$"
+    .string "Siamo sempre a disposizione!$"

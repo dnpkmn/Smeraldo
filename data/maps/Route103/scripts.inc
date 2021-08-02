@@ -28,6 +28,37 @@ Route103_EventScript_Rival:: @ 81EC3C1
 	goto_if_eq Route103_EventScript_RivalBrendan
 	end
 
+Percorso2_EventScript_Andrew::
+trainerbattle_single TRAINER_ANDREW, Percorso2_Text_AndrewIntro, Percorso2_Text_AndrewDefeated
+msgbox Percorso2_Text_AndrewPostBattle, MSGBOX_AUTOCLOSE
+end
+
+Percorso2_EventScript_Heidi::
+trainerbattle_single TRAINER_HEIDI, Percorso2_Text_HeidiIntro, Percorso2_Text_HeidiDefeated
+msgbox Percorso2_Text_HeidiPostBattle, MSGBOX_AUTOCLOSE
+end
+
+Percorso2_Text_AndrewIntro:
+.string "Guarda cosa ho pescato!$"
+
+Percorso2_Text_AndrewDefeated:
+.string "Pescherò ancora di più!$"
+
+Percorso2_Text_AndrewPostBattle:
+.string "Sei bravo, dovresti però anche\n"
+.string "imparare a pescare.$"
+
+Percorso2_Text_HeidiIntro:
+.string "Vediamo come te la cavi,\n"
+.string "principiante!$"
+
+Percorso2_Text_HeidiDefeated:
+.string "Hai stoffa!$"
+
+Percorso2_Text_HeidiPostBattle:
+.string "Potresti diventare un grande\n"
+.string "allenatore un giorno, chi lo sa!$"
+
 Route103_EventScript_RivalMay:: @ 81EC3DA
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage

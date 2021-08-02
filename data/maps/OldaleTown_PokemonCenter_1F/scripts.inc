@@ -18,7 +18,7 @@ OldaleTown_PokemonCenter_1F_EventScript_Nurse:: @ 81FC01A
 	release
 	end
 
-OldaleTown_PokemonCenter_1F_EventScript_Gentleman:: @ 81FC028
+OldaleTown_PokemonCenter_1F_EventScript_Camper:: @ 81FC028
 	msgbox OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC, MSGBOX_NPC
 	end
 
@@ -40,16 +40,15 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable:: @ 81FC04F
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC: @ 81FC059
-	.string "That PC in the corner there is\n"
-	.string "for any POKéMON TRAINER to use.\p"
-	.string "Naturally, that means you're welcome\n"
-	.string "to use it, too.$"
+	.string "I Centri Pokémon sono una vera\n"
+	.string "benedizione per gli allenatori!\l"
+	.string "Gratuitamente mettono in sesto i\l"
+	.string "tuoi Pokémon!$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat: @ 81FC0CD
-	.string "POKéMON CENTERS are great!\p"
-	.string "You can use their services as much\n"
-	.string "as you like, and it's all for free.\l"
-	.string "You never have to worry!$"
+	.string "Sto giocando a questo gioco! Si\n"
+	.string "chiama..Pokémon Destino Finale.\l"
+	.string "Che sballo!!$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable: @ 81FC148
 	.string "The POKéMON WIRELESS CLUB on\n"

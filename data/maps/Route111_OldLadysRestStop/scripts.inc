@@ -9,12 +9,19 @@ Route111_OldLadysRestStop_OnTransition: @ 822A91C
 Route111_OldLadysRestStop_EventScript_OldLady:: @ 822A920
 	lock
 	faceplayer
-	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq Route111_OldLadysRestStop_EventScript_Rest
-	compare VAR_RESULT, NO
-	goto_if_eq Route111_OldLadysRestStop_EventScript_DeclineRest
+	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_NPC
+	fadescreen 1
+    playfanfare MUS_HEAL
+	waitfanfare
+	fadescreen 0
+	msgbox text_guariti MSGBOX_DEFAULT
+	closemessage
+	special HealPlayerParty
 	end
+
+text_guariti:
+.string "Adesso i tuoi Pokémon sono pieni\n"
+.string "di energie!$"
 
 Route111_OldLadysRestStop_EventScript_Rest:: @ 822A941
 	msgbox Route111_OldLadysRestStop_Text_TakeYourTimeRestUp, MSGBOX_DEFAULT
@@ -33,10 +40,9 @@ Route111_OldLadysRestStop_EventScript_DeclineRest:: @ 822A96E
 	end
 
 Route111_OldLadysRestStop_Text_RestUpHere: @ 822A978
-	.string "Oh, dear, dear.\n"
-	.string "Aren't your POKéMON exhausted?\p"
-	.string "If you'd like, rest up here.\n"
-	.string "That's a fine idea! You should do that.$"
+.string "Una volta ero un'infermiera.\n"
+.string "Permettimi di far riposare i tuoi\l"
+.string "Pokémon!$"
 
 Route111_OldLadysRestStop_Text_TakeYourTimeRestUp: @ 822A9EC
 	.string "That's right.\n"

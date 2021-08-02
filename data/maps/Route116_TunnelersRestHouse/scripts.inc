@@ -28,15 +28,10 @@ Route116_TunnelersRestHouse_EventScript_TunnelOpened:: @ 822B881
 	end
 
 Route116_TunnelersRestHouse_Text_WeHadToStopBoring: @ 822B88B
-	.string "That RUSTURF TUNNEL there…\p"
-	.string "At first, we had a huge work crew boring\n"
-	.string "through rock with the latest machinery.\l"
-	.string "But, we had to stop.\p"
-	.string "It turns out that we would have had\n"
-	.string "a negative effect on wild POKéMON in\l"
-	.string "the area.\p"
-	.string "So, we've got nothing to do but loll\n"
-	.string "around here doing nothing.$"
+	.string "La TV racconta solo quel che gli\n"
+	.string "fa comodo! Ecco perché non ho una\l"
+	.string "TV in casa!$"
+	
 
 Route116_TunnelersRestHouse_Text_ManDiggingHisWayToVerdanturf: @ 822B99F
 	.string "There's a man digging his way to\n"

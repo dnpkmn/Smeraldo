@@ -58,11 +58,208 @@ LittlerootTown_MaysHouse_1F_OnFrame: @ 81F893A
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
+	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_Lite
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
 
-LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock:: @ 81F8964
+LittlerootTown_MaysHouse_1F_EventScript_Lite::
+    lockall
+	compare VAR_UNUSED_0x404E, 0
+	goto_if_gt LittlerootTown_MaysHouse_1F_EventScript_End
+	playbgm MUS_RG_ENCOUNTER_RIVAL, TRUE
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_puntoint
+	waitmovement 0
+    applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_susufacciadestra
+	waitmovement 0
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_MaysHouse_1F_Movement_puntoescl
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_1, MSGBOX_DEFAULT
+	closemessage
+	msgbox PlayersHouse_1F_Text_2, MSGBOX_DEFAULT
+    closemessage
+	msgbox PlayersHouse_1F_Text_3, MSGBOX_DEFAULT
+    closemessage
+	msgbox PlayersHouse_1F_Text_4, MSGBOX_DEFAULT
+	closemessage
+	msgbox PlayersHouse_1F_Text_5, MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, LittlerootTown_MaysHouse_1F_Movement_sinistra
+	waitmovement 0
+	playse SE_PIN
+	applymovement 9, LittlerootTown_MaysHouse_1F_Movement_puntoescl2
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_6, MSGBOX_DEFAULT
+	closemessage
+	applymovement 9, LittlerootTown_MaysHouse_1F_Movement_exit
+	waitmovement 0
+	removeobject 9
+	applymovement 8, LittlerootTown_MaysHouse_1F_Movement_momlast
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_7, MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, LittlerootTown_MaysHouse_1F_Movement_momlast2
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_8, MSGBOX_DEFAULT
+	closemessage
+	playse SE_PIN
+    applymovement 8, LittlerootTown_MaysHouse_1F_Movement_momlast3
+    waitmovement 0
+    msgbox PlayersHouse_1F_Text_9, MSGBOX_DEFAULT
+	closemessage
+	applymovement 8, LittlerootTown_MaysHouse_1F_Movement_momlast4
+	waitmovement 0
+	msgbox PlayersHouse_1F_Text_10, MSGBOX_DEFAULT
+	closemessage
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	setvar VAR_UNUSED_0x404E, 1
+	setflag FLAG_UNUSED_0x020
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 0
+	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	releaseall
+	end
+
+	LittlerootTown_MaysHouse_1F_EventScript_End::
+	releaseall
+	end
+
+	LittlerootTown_MaysHouse_1F_Movement_puntoint:
+	emote_question_mark
+	step_end
+
+	PlayersHouse_1F_Text_1:
+	.string "???: Non capisco perché dobbiamo\n"
+	.string "vivere in questo posto deserto!\l"
+	.string "Non è qui che troverò quell'uomo!$"
+	
+	PlayersHouse_1F_Text_2:
+    .string "Lisa: Quell'uomo è tuo PADRE! Non\n"
+	.string "parlare così di lui, Lux!$"
+
+	PlayersHouse_1F_Text_3: 
+	.string "Lux: Un padre non abbandona la sua\n"
+    .string "famiglia, almeno, non senza un\l"
+	.string "valido motivo!$"
+
+	PlayersHouse_1F_Text_4:
+	.string "Lisa: Ti ho detto tante volte che\n"
+	.string "a tuo padre è sempre piaciuto\l"
+	.string "viaggiare con i suoi Pokémon.\l"
+	.string "Non ci ha, abbandonati, come dici.\l"
+	.string "Quella volta, io accettai la sua\l"
+	.string "decisione e decisi di crescerti\l"
+	.string "anche senza lui al mio fianco.$"
+
+	PlayersHouse_1F_Text_5:
+	.string "Lux: Basta, non ne posso più dei\n"
+	.string "tuoi discorsi. So quanto realmente\l"
+	.string "ti manca, mamma, anzi quanto CI\l"
+	.string "manca. Andrò a cercarlo in capo al\l"
+    .string "mondo se necessario e gliene dirò\l"
+	.string "quattro a quel farabutto! Io e il\l"
+	.string "mio Shinx siamo pronti a sfidare\l"
+	.string "chiunque, se necessario!$"
+    
+	PlayersHouse_1F_Text_6:
+    .string "Lux: E tu chi diavolo saresti?\n"
+	.string "Hmph, non mi importa degli ospiti.$"
+
+	PlayersHouse_1F_Text_7:
+    .string "Lisa: Aspetta, Lux! Non andartene!$"
+
+	PlayersHouse_1F_Text_8:
+	.string "Lisa: Accidenti..è davvero\n"
+	.string "ostinato! Tale padre, tale figlio.\p"
+	.string "Oh, che sciocca! Non mi sono\n"
+	.string "presentata! Mi chiamo Lisa. Sono\l"
+	.string "mortificata per quanto successo.\l"
+	.string "Lux non è un cattivo ragazzo, è\l"
+	.string "solo che soffre molto la mancanza\l"
+    .string "del padre, un allenatore che ha\l"
+    .string "deciso di viaggiare con i suoi\l"
+	.string "pokémon. Quindi, ti chiami\l"
+	.string "{PLAYER}? Capisco. Ma che carino da\l"
+	.string "parte tua presentarti ai tuoi\l"
+	.string "vicini di casa! Fai come se fosse\l"
+	.string "casa tua!$"
+
+    PlayersHouse_1F_Text_9:
+    .string "Hmmh..$"
+
+	PlayersHouse_1F_Text_10:
+    .string "Lisa: Devo chiederti un favore\n"
+	.string "{PLAYER}. Se sei intenzionato anche\l"
+	.string "tu a metterti in viaggio, bada tu\l"
+	.string "a Lux. Ho già capito che tu sei\l"
+	.string "una persona in gamba. Sono\l"
+	.string "sicurissima che se controlli mio\l"
+	.string "figlio, non succederà mai nulla di\l"
+	.string "spiacevole al mio Lux.$"
+    
+    LittlerootTown_MaysHouse_1F_Movement_puntoescl2:
+    emote_exclamation_mark
+	step_end
+    
+	LittlerootTown_MaysHouse_1F_Movement_puntoescl:
+    emote_exclamation_mark
+	step_end
+
+	LittlerootTown_MaysHouse_1F_Movement_susufacciadestra:
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+    LittlerootTown_MaysHouse_1F_Movement_sinistra:
+    walk_left
+	step_end
+    
+	LittlerootTown_MaysHouse_1F_Movement_exit:
+    walk_down
+	walk_down
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+    LittlerootTown_MaysHouse_1F_Movement_momlast:
+    walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+    step_end
+
+	LittlerootTown_MaysHouse_1F_Movement_momlast2:
+    face_left
+	step_end
+
+	LittlerootTown_MaysHouse_1F_Movement_momlast3:
+	face_right
+    emote_exclamation_mark
+	step_end
+
+	LittlerootTown_MaysHouse_1F_Movement_momlast4:
+	face_left
+	step_end
+
+	LittlerootTown_MaysHouse_1F_EventScript_Lisa::
+    lock
+	faceplayer
+	msgbox PlayersHouse_1F_Text_lisachat, MSGBOX_DEFAULT
+	closemessage
+    release
+	end
+
+	PlayersHouse_1F_Text_lisachat:
+    .string "Lisa: {PLAYER}, per cortesia, bada\n"
+	.string "tu al mio Lux. Conto su di te.$"
+	
+    LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock:: @ 81F8964
 	lockall
 	msgbox PlayersHouse_1F_Text_GoSetTheClock, MSGBOX_DEFAULT
 	closemessage
@@ -213,6 +410,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival:: @ 81F8A8B
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
 	delay 30
+
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
 	setvar VAR_LITTLEROOT_TOWN_STATE, 1
 	savebgm MUS_DUMMY

@@ -9,8 +9,6 @@ OldaleTown_MapScripts:: @ 81E8EA2
 OldaleTown_OnTransition: @ 81E8EA8
 	call Common_EventScript_SetupRivalGfxId
 	setflag FLAG_VISITED_OLDALE_TOWN
-	call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
-	call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
 	call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
 	end
 
@@ -72,6 +70,13 @@ OldaleTown_EventScript_GoToMartEast:: @ 81E8F75
 	waitmovement 0
 	goto OldaleTown_EventScript_ExplainPokemonMart
 	end
+
+OldaleTown_EventScript_oldrodSign::
+msgbox text_oldrodsign MSGBOX_SIGN
+end
+
+text_oldrodsign:
+.string "Casa del Vecchio Marinaio$"
 
 OldaleTown_EventScript_ExplainPokemonMart:: @ 81E8F8C
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
@@ -192,16 +197,74 @@ OldaleTown_Movement_Unknown2: @ 81E9013
 	walk_up
 	step_end
 
+EventScript_Lotad::
+	lock
+	faceplayer
+	playmoncry SPECIES_LOTAD, 0
+	msgbox Text_CryLotad, MSGBOX_DEFAULT
+	waitmoncry
+    closemessage
+	release
+	end
+
+Text_CryLotad:
+	.string "Lotad: Lotad!$"
+
+EventScript_Mapcity::
+    lock
+	faceplayer
+	goto_if_set FLAG_UNUSED_0x022, Script_alreadyending
+	msgbox Text_seinuovo MSGBOX_NPC
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_AMULET_COIN
+    waitfanfare
+    closemessage
+	msgbox T_gb MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_UNUSED_0x022
+  	closemessage
+	release
+	end
+
+Text_seinuovo:
+.string "I soldi non fanno la felicità,\n"
+.string "però averne di più, potrebbe\l"
+.string "aiutarti a comprare tutto ciò che\l"
+.string "ti occorre, nelle lotte Pokémon!\l"
+.string "Voglio regalarti questo strumento\l\l"
+.string "incredibile che ho usato quando\l"
+.string "ero più giovane. A me non serve\l"
+.string "più, ormai. Ohohohoh!$"
+
+Script_alreadyending::
+lock
+faceplayer
+msgbox Text_gaveuthat MSGBOX_NPC
+release
+end
+
+Text_gaveuthat:
+.string "Mi sento sempre in dovere di\n"
+.string "aiutare i giovani! Ohohohoh!$"
+
+T_gb:
+.string "Ora sì che le Lotte Pokémon\n"
+.string "saranno più redditizie!$"
+
 OldaleTown_EventScript_FootprintsMan:: @ 81E901F
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_NotBlockingPath
-	msgbox OldaleTown_Text_DiscoveredFootprints, MSGBOX_DEFAULT
+	msgbox Text_babyninja, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_FOOTPRINTS_MAN, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
 	end
+
+Text_babyninja:
+.string "Io e il mio Lotad, siamo grandi\n"
+.string "amici. Sai che i Pokémon non ti\l"
+.string "tradiranno mai?$"
 
 OldaleTown_EventScript_BlockedPath:: @ 81E903F
 	lockall
@@ -402,6 +465,91 @@ OldaleTown_Text_BrendanLetsGoBack: @ 81E948A
 	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_CitySign: @ 81E94DA
-	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"
+	.string "Mascar\n"
+	.string "{DOWN_ARROW} Percorso 1\l"
+	.string "{UP_ARROW} Percorso 2\l"
+	.string "{LEFT_ARROW} Percorso 3$"
 
+OldaleTown_EventScript_Pokefan::
+    lock
+	faceplayer
+	random 3
+	switch VAR_RESULT
+	case 0, Script_RandomOptionA
+	case 1, Script_RandomOptionB
+	case 2, Script_RandomOptionC
+	end
+	
+Script_RandomOptionA::
+	msgbox Text_RandomOptiona, MSGBOX_DEFAULT
+	release
+	end
+	
+Script_RandomOptionB::
+	msgbox Text_RandomOptionb, MSGBOX_DEFAULT
+	release
+	end
+
+Script_RandomOptionC::
+	msgbox Text_RandomOptionc, MSGBOX_DEFAULT
+	release
+	end
+
+Text_RandomOptiona:
+.string "Timber è simile a Bell ma offre\n"
+.string "più opportunità agli allenatori.\l"
+.string "Puoi infatti, trovarci un Centro\l"
+.string "Pokémon e un Poké Market!$"
+
+Text_RandomOptionb:
+.string "Ho sentito dire che è stata\n"
+.string "scoperta una tipologia nuova di\l"
+.string "Pokémon.$"
+
+Text_RandomOptionc:
+.string "E' curioso pensare che i migliori\n"
+.string "allenatori della storia, abbiano\l"
+.string "vinto il loro titolo in così\l"
+.string "giovane età. I giovani sono così\l"
+.string "talentuosi, ai giorni nostri!$"
+
+OldaleTown_EventScript_Girly::
+    lock
+	faceplayer
+	random 3
+	switch VAR_RESULT
+	case 0, Script_RandomOption11
+	case 1, Script_RandomOption22
+	case 2, Script_RandomOption33
+	end
+
+Script_RandomOption11::
+	msgbox Text_RandomOption11, MSGBOX_DEFAULT
+	release
+	end
+
+Script_RandomOption22::
+	msgbox Text_RandomOption22, MSGBOX_DEFAULT
+	release
+	end
+
+Script_RandomOption33::
+	msgbox Text_RandomOption33, MSGBOX_DEFAULT
+	release
+	end
+
+Text_RandomOption11:
+.string "Chissà perché alcuni allenatori\n"
+.string "vogliono a tutti i costi vincere\l"
+.string "le medaglie. A me basta stare in\l"
+.string "compagnia dei miei Pokémon.$"
+
+Text_RandomOption22:
+.string "Qui a Timber, non piove mai per\n"
+.string "fortuna.$"
+
+Text_RandomOption33:
+.string "Si dice che ci sia un luogo,\n"
+.string "accessibile solo a chi possiede\l"
+.string "tutte le medaglie della regione.\l"
+.string "Dev'essere molto pericoloso!$"

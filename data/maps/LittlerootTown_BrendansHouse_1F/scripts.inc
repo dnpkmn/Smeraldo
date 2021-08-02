@@ -36,7 +36,16 @@ LittlerootTown_BrendansHouse_1F_OnTransition: @ 81F77A4
 	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	compare VAR_LITTLEROOT_INTRO_STATE, 6
 	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	compare VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 0
+	call_if_eq LittlerootTown_BrendansHouse_1F_EventScript_MoveMomDadEevee @ 81F77C6
 	end
+
+	LittlerootTown_BrendansHouse_1F_EventScript_MoveMomDadEevee:: @ 81F77C6
+	setobjectxyperm 5, 8, 4
+	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm LOCALID_MOM, 7, 4
+    setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_RIGHT
+	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs:: @ 81F77C6
 	setobjectxyperm LOCALID_MOM, 8, 4
@@ -59,9 +68,283 @@ LittlerootTown_BrendansHouse_1F_OnFrame: @ 81F77EA
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
+	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 0, LittlerootTown_BrendansHouse_1F_EventoEevee
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
+
+LittlerootTown_BrendansHouse_1F_EventoEevee::
+lockall
+compare VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 7,
+goto_if_eq EventScript_Endd
+playbgm MUS_LITTLEROOT, TRUE
+playse SE_PIN
+applymovement OBJ_EVENT_ID_PLAYER, Movement_1
+waitmovement 0
+applymovement 1, Movement_2  
+applymovement 5, Movement_2
+waitmovement 0
+msgbox Text_1 MSGBOX_DEFAULT
+closemessage
+msgbox Text_2 MSGBOX_DEFAULT
+closemessage
+applymovement OBJ_EVENT_ID_PLAYER, Movement_3
+waitmovement 0
+msgbox Text_3, MSGBOX_DEFAULT
+closemessage
+applymovement 1, Movement_4
+waitmovement 0
+msgbox Text_4, MSGBOX_DEFAULT
+closemessage
+applymovement 5, Movement_5
+waitmovement 0
+msgbox Text_5, MSGBOX_DEFAULT
+closemessage
+applymovement 1, Movement_6
+applymovement 5, Movement_6
+waitmovement 0
+msgbox Text_6, MSGBOX_DEFAULT
+closemessage
+applymovement 1, Movement_4
+waitmovement 0
+msgbox Text_7, MSGBOX_DEFAULT
+closemessage
+applymovement 5, Movement_5
+waitmovement 0
+msgbox Text_8, MSGBOX_DEFAULT
+closemessage
+applymovement 5, Movement_7
+applymovement 1, Movement_6
+waitmovement 0
+msgbox Text_9 MSGBOX_DEFAULT
+closemessage
+msgbox Text_10, MSGBOX_DEFAULT
+closemessage
+playfanfare MUS_OBTAIN_ITEM
+givemon SPECIES_EEVEE, 5, ITEM_SITRUS_BERRY
+msgbox Text_ReceivedEevee, MSGBOX_DEFAULT
+waitfanfare
+msgbox Text_NicknameEevee, MSGBOX_YESNO
+compare VAR_RESULT, YES
+call_if_eq NicknamingEevee
+msgbox Text_11, MSGBOX_DEFAULT
+closemessage
+applymovement 5, Movement_8
+waitmovement 0
+applymovement OBJ_EVENT_ID_PLAYER, Movement_6
+applymovement 1, Movement_6
+waitmovement 0
+msgbox Text_12, MSGBOX_DEFAULT
+closemessage
+applymovement 5, Movement_9
+waitmovement 0
+removeobject 5
+applymovement 1, Movement_towardsplayer
+applymovement OBJ_EVENT_ID_PLAYER, Move_Faceup
+waitmovement 0
+msgbox Text_runningshoes, MSGBOX_DEFAULT
+closemessage
+playfanfare MUS_OBTAIN_ITEM
+msgbox Text_Obtainedshoes, MSGBOX_DEFAULT
+waitfanfare
+closemessage
+msgbox Text_runningshoestutorial, MSGBOX_DEFAULT
+closemessage
+msgbox Text_ending, MSGBOX_DEFAULT
+closemessage
+savebgm MUS_DUMMY
+fadedefaultbgm
+setflag FLAG_RECEIVED_RUNNING_SHOES
+setflag FLAG_SYS_B_DASH
+setvar VAR_UNUSED_0x408B 1
+setflag FLAG_SYS_POKEMON_GET
+setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 7
+setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+releaseall
+end
+
+Text_Obtainedshoes:
+.string "{PLAYER} riceve le Scarpe da Corsa!$"
+
+Text_ending:
+.string "Buon viaggio, tesoro!$"
+
+Text_runningshoes:
+.string "Mamma: {PLAYER}, non è mai facile\n"
+.string "per una madre, vedere il figlio\l"
+.string "andare via di casa. Però, so\l"
+.string "quanto hai desiderato avere un\l"
+.string "Pokémon tutto tuo! Vorrei\l"
+.string "almeno mi venissi a trovare ogni\l"
+.string "tanto. Prima che tu vada via,\l"
+.string "voglio anche io farti un regalo.\l"
+.string "Sono delle Scarpe da Corsa. Con\l"
+.string "queste, potrai andare ovunque, in\l"
+.string "men che non si dica!$"
+
+Text_runningshoestutorial:
+.string "E' il manuale per le scarpe da\n"
+.string "corsa! Vediamo cosa c'è scritto..\p"
+.string "Le Scarpe da Corsa per andare\l"
+.string "veloce come il vento! O quasi..\n"
+.string "Premere B per correre!$"
+
+Movement_towardsplayer:
+walk_right
+walk_down
+step_end
+
+Move_Faceup:
+face_up
+step_end
+
+NicknamingEevee::
+setvar VAR_0x8004, 0
+fadescreen 1
+special ChangePokemonNickname
+waitstate
+return
+
+EventScript_Endd::
+releaseall
+end
+
+Movement_1:
+emote_exclamation_mark
+step_end
+
+Movement_2:
+face_down
+emote_exclamation_mark
+step_end
+
+Movement_3:
+walk_up
+walk_up
+step_end
+
+Movement_4:
+face_right
+step_end
+
+Movement_5:
+face_left
+step_end
+
+Movement_6:
+face_down
+step_end
+
+Movement_7:
+walk_down
+step_end
+
+Movement_8:
+walk_right
+walk_down
+walk_down
+walk_left
+face_up
+step_end
+
+Movement_9:
+walk_down
+step_end
+
+Text_1:
+.string "Mamma: Tesoro! Bentornato!$"
+
+Text_2:
+.string "Papà: Ciao {PLAYER}. Bentornato.$"
+
+Text_3:
+.string "Papà: Dov'eri andato di bello?$"
+
+Text_4:
+.string "Mamma: E' andato a presentarsi dai\n"
+.string "vicini di casa. Un'altra famiglia\l"
+.string "si è trasferita come noi, proprio\l"
+.string "oggi, qui a Bell.$"
+
+Text_5:
+.string "Ah, capisco.$"
+
+Text_6:
+.string "Papà: Bene, io devo andare via\n"
+.string "adesso. Cercherò di tornare il\l"
+.string "prima possibile.$"
+
+Text_7:
+.string "Mamma: Ma come? Sei appena\n"
+.string "tornato..$"
+
+Text_8:
+.string "Papà: Hai ragione cara. Tuttavia,\n"
+.string "devo incontrare una certa\l"
+.string "persona per parlare di affari. A\l"
+.string "quel punto, tornerò a casa, per\l"
+.string "una meritata vacanza. Ahahah!$"
+
+Text_9:
+.string "Papà: {PLAYER}. Oggi è il tuo\n"
+.string "compleanno. Per questo, non\l"
+.string "potevo non farti un regalo.$"
+
+Text_10:
+.string "Papà: Durante il mio ultimo\n"
+.string "viaggio, ho trovato un cucciolo di\l"
+.string "Eevee, probabilmente abbandonato\l"
+.string "dal suo allenatore. Non potevo\l"
+.string "lasciarlo lì senza fare nulla.\l"
+.string "Questo Pokémon ha bisogno di un\l"
+.string "allenatore che lo tratti bene.\l"
+.string "Questo è il mio regalo per te,\l"
+.string "{PLAYER}.$"
+
+Text_ReceivedEevee:
+.string "{PLAYER} ha ricevuto Eevee!$"
+
+Text_NicknameEevee:
+.string "Vuoi dare un soprannome ad Eevee?$"
+
+Text_11:
+.string "Papà: Non ho mai visto un Pokémon\n"
+.string "così felice. Sono sicuro che con\l"
+.string "te, è in ottime mani.$"
+
+Text_12:
+.string "Papà: A presto!$"
+
+Text_posteevee:
+.string "Mamma: Che bel regalo di\n"
+.string "compleanno! Tuo padre è sempre\l"
+.string "molto indaffarato. Capisco se vuoi\l"
+.string "metterti in viaggio con il tuo\l"
+.string "Pokémon. Mi raccomando {PLAYER},\l"
+.string "fai sempre attenzione.$"
+
+Event_vicini::
+lock
+faceplayer
+msgbox PlayersHouse_1F_Text_DidYouMeetProfBirch MSGBOX_DEFAULT
+release
+end
+
+PlayersHouse_1F_EventScript_Mom2::
+checkflag FLAG_UNUSED_0x023
+goto_if_unset FLAG_UNUSED_0x023, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
+checkflag FLAG_SYS_POKEMON_GET
+goto_if_unset FLAG_SYS_POKEMON_GET, Event_vicini
+goto_if_set FLAG_SYS_POKEMON_GET, Event_posteevee
+msgbox Text_posteevee MSGBOX_DEFAULT
+release
+end
+
+Event_posteevee::
+lock
+faceplayer
+msgbox Text_posteevee MSGBOX_DEFAULT
+release
+end
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock:: @ 81F7814
 	lockall
@@ -72,6 +355,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock:: @ 81F7814
 	waitmovement 0
 	warp MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F, 255, 7, 1
 	waitstate
+	setflag FLAG_UNUSED_0x023
 	releaseall
 	end
 
@@ -300,62 +584,62 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2: @ 81F7A16
 	step_end
 
 PlayersHouse_1F_Text_IsntItNiceInHere: @ 81F7A1C
-	.string "MOM: See, {PLAYER}?\n"
-	.string "Isn't it nice in here, too?$"
+	.string "Mamma: Vedi, {PLAYER}?\n"
+	.string "Non è carina?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock: @ 81F7A46
-	.string "The mover's POKéMON do all the work\n"
-	.string "of moving us in and cleaning up after.\l"
-	.string "This is so convenient!\p"
-	.string "{PLAYER}, your room is upstairs.\n"
-	.string "Go check it out, dear!\p"
-	.string "DAD bought you a new clock to mark\n"
-	.string "our move here.\l"
-	.string "Don't forget to set it!$"
+	.string "Ci penseranno i Pokémon a\n"
+	.string "sistemare le nostre valigie.\l"
+	.string "Viva i Pokémon!\p"
+	.string "{PLAYER}, la tua stanza è sopra.\n"
+	.string "Dagli un'occhiata, caro!\p"
+	.string "Bisogna sistemare anche l'orologio.\n"
+	.string "Pensaci tu, tesoro!$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom: @ 81F7B24
-	.string "MOM: Well, {PLAYER}?\p"
-	.string "Aren't you interested in seeing your\n"
-	.string "very own room?$"
+	.string "Mamma: Beh, {PLAYER}?\p"
+	.string "Non sei interessato a vedere\n"
+	.string "la tua stanza?$"
 
 PlayersHouse_1F_Text_GoSetTheClock: @ 81F7B67
-	.string "MOM: {PLAYER}.\p"
-	.string "Go set the clock in your room, honey.$"
+	.string "Mamma: {PLAYER}.\p"
+	.string "Non dimenticarti di impostare l'orologio, tesoro.$"
 
 PlayersHouse_1F_Text_OhComeQuickly: @ 81F7B96
-	.string "MOM: Oh! {PLAYER}, {PLAYER}!\n"
-	.string "Quick! Come quickly!$"
+	.string "Mamma: Oh! {PLAYER}, {PLAYER}!\n"
+	.string "Presto! Presto!$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn: @ 81F7BBC
-	.string "MOM: Look! It's PETALBURG GYM!\n"
-	.string "Maybe DAD will be on!$"
+	.string "Mamma: Guarda! E' una notizia speciale!\n"
+	.string "Dev'essere importante!$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim: @ 81F7BF1
-	.string "MOM: Oh… It's over.\p"
-	.string "I think DAD was on, but we missed him.\n"
-	.string "Too bad.$"
+	.string "Mamma: Oh… non ci voleva.. Sono\n"
+	.string "in pensiero per tuo padre,\l"
+	.string "dovrebbe tornare oggi dal suo,\l"
+	.string "viaggio d'affari.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor: @ 81F7C35
-	.string "Oh, yes.\n"
-	.string "One of DAD's friends lives in town.\p"
-	.string "PROF. BIRCH is his name.\p"
-	.string "He lives right next door, so you should\n"
-	.string "go over and introduce yourself.$"
+	.string "Oh, quasi dimenticavo.\n"
+	.string "Un'altra famiglia si è trasferita.\p"
+	.string "qui a BELL.\p"
+	.string "Vivono nella casa accanto.\n"
+	.string "Vai a presentarti, tesoro.$"
 
 PlayersHouse_1F_Text_SeeYouHoney: @ 81F7CC3
-	.string "MOM: See you, honey!$"
+	.string "Mamma: Ci vediamo, tesoro!$"
 
 PlayersHouse_1F_Text_DidYouMeetProfBirch: @ 81F7CD8
-	.string "MOM: Did you introduce yourself to\n"
-	.string "PROF. BIRCH?$"
+	.string "MOM: Ti sei presentato\n"
+	.string "ai vicini?$"
 
 PlayersHouse_1F_Text_YouShouldRestABit: @ 81F7D08
-	.string "MOM: How are you doing, {PLAYER}?\n"
-	.string "You look a little tired.\p"
-	.string "I think you should rest a bit.$"
+	.string "Mamma: Come stai, {PLAYER}?\n"
+	.string "Sembri un pò stanco.\p"
+	.string "Penso tu debba riposare.$"
 
 PlayersHouse_1F_Text_TakeCareHoney: @ 81F7D5C
-	.string "MOM: Take care, honey!$"
+	.string "Mamma: stai attento, tesoro.$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom: @ 81F7D73
 	.string "MOM: Oh? Did DAD give you that BADGE?\p"
@@ -384,14 +668,16 @@ PlayersHouse_1F_Text_Vigoroth2: @ 81F7EB3
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym: @ 81F7EC6
-	.string "INTERVIEWER: …We brought you this\n"
-	.string "report from in front of PETALBURG GYM.$"
+.string "TV: Attenzione! Una banda di\n"
+.string "malviventi sembra essersi\l"
+.string "stabilita nella regione di Ancar!\l"
+.string "Per qualsiasi tipo di problema,\l"
+.string "non esitare a contattare la\l"
+.string "Polizia! Questo è tutto da\l"
+.string "PokéChannel!$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV: @ 81F7F0F
-	.string "There is a movie on TV.\p"
-	.string "Two men are dancing on a big piano\n"
-	.string "keyboard.\p"
-	.string "Better get going!$"
+	.string "La TV è spenta.$"
 
 PlayersHouse_1F_Text_RunningShoesManual: @ 81F7F66
 	.string "It's the instruction booklet for the\n"

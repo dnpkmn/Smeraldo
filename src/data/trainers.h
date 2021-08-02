@@ -15,16 +15,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_SAWYER_1] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_HIKER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_HIKER,
         .trainerName = _("SAWYER"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = ARRAY_COUNT(sParty_Sawyer1),
-        .party = {.NoItemDefaultMoves = sParty_Sawyer1},
+        .party = {.ItemDefaultMoves = sParty_Sawyer1},
     },
 
     [TRAINER_GRUNT_AQUA_HIDEOUT_1] =
@@ -3249,16 +3249,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_EDWARD] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PSYCHIC,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_INTENSE,
         .trainerPic = TRAINER_PIC_PSYCHIC_M,
         .trainerName = _("EDWARD"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Edward),
-        .party = {.NoItemCustomMoves = sParty_Edward},
+        .party = {.ItemDefaultMoves = sParty_Edward},
     },
 
     [TRAINER_PRESTON] =
@@ -4453,16 +4453,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_CALVIN_1] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .trainerName = _("CALVIN"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Calvin1),
-        .party = {.NoItemDefaultMoves = sParty_Calvin1},
+        .party = {.ItemDefaultMoves = sParty_Calvin1},
     },
 
     [TRAINER_BILLY] =
@@ -4705,7 +4705,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_ANDREW] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_FISHERMAN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_FISHERMAN,
@@ -4714,21 +4714,21 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Andrew),
-        .party = {.NoItemDefaultMoves = sParty_Andrew},
+        .party = {.ItemDefaultMoves = sParty_Andrew},
     },
 
     [TRAINER_IVAN] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_FISHERMAN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_FISHERMAN,
         .trainerName = _("IVAN"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Ivan),
-        .party = {.NoItemDefaultMoves = sParty_Ivan},
+        .party = {.ItemDefaultMoves = sParty_Ivan},
     },
 
     [TRAINER_CLAUDE] =
@@ -6567,30 +6567,30 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_HEIDI] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PICNICKER,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_GIRL,
         .trainerPic = TRAINER_PIC_PICNICKER,
         .trainerName = _("HEIDI"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Heidi),
-        .party = {.NoItemCustomMoves = sParty_Heidi},
+        .party = {.ItemDefaultMoves = sParty_Heidi},
     },
 
     [TRAINER_BECKY] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PICNICKER,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_GIRL,
         .trainerPic = TRAINER_PIC_PICNICKER,
         .trainerName = _("BECKY"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Becky),
-        .party = {.NoItemCustomMoves = sParty_Becky},
+        .party = {.ItemDefaultMoves = sParty_Becky},
     },
 
     [TRAINER_CAROL] =
@@ -7281,16 +7281,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_BRENDAN_ROUTE_103_MUDKIP] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BRENDAN,
         .trainerName = _("BRENDAN"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_POTION, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = ARRAY_COUNT(sParty_BrendanRoute103Mudkip),
-        .party = {.NoItemDefaultMoves = sParty_BrendanRoute103Mudkip},
+        .party = {.ItemDefaultMoves = sParty_BrendanRoute103Mudkip},
     },
 
     [TRAINER_BRENDAN_ROUTE_110_MUDKIP] =
@@ -7407,16 +7407,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_MAY_ROUTE_103_MUDKIP] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_3,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_MAY,
         .trainerName = _("MAY"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_POTION, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .partySize = ARRAY_COUNT(sParty_MayRoute103Mudkip),
-        .party = {.NoItemDefaultMoves = sParty_MayRoute103Mudkip},
+        .party = {.ItemDefaultMoves = sParty_MayRoute103Mudkip},
     },
 
     [TRAINER_MAY_ROUTE_110_MUDKIP] =
@@ -7547,16 +7547,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_DAVIS] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .trainerName = _("DAVIS"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Davis),
-        .party = {.NoItemDefaultMoves = sParty_Davis},
+        .party = {.ItemDefaultMoves = sParty_Davis},
     },
 
     [TRAINER_MITCHELL] =
@@ -8457,16 +8457,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_HALEY_1] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_LASS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LASS,
         .trainerName = _("HALEY"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Haley1),
-        .party = {.NoItemDefaultMoves = sParty_Haley1},
+        .party = {.ItemDefaultMoves = sParty_Haley1},
     },
 
     [TRAINER_JANICE] =
@@ -8611,30 +8611,30 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_RICK] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .trainerName = _("RICK"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Rick),
-        .party = {.NoItemDefaultMoves = sParty_Rick},
+        .party = {.ItemDefaultMoves = sParty_Rick},
     },
 
     [TRAINER_LYLE] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .trainerName = _("LYLE"),
-        .items = {},
+        .items = {ITEM_POTION, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Lyle),
-        .party = {.NoItemDefaultMoves = sParty_Lyle},
+        .party = {.ItemDefaultMoves = sParty_Lyle},
     },
 
     [TRAINER_JOSE] =

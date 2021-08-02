@@ -12,12 +12,12 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 19,
-      "y": 10,
+      "x": 45,
+      "y": 40,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -28,9 +28,9 @@
       "flag": "FLAG_TEMP_11"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 19,
-      "y": 11,
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 47,
+      "y": 61,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -81,8 +81,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 35,
-      "y": 20,
+      "x": 47,
+      "y": 38,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -94,8 +94,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
-      "y": 8,
+      "x": 26,
+      "y": 23,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -159,8 +159,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
-      "y": 26,
+      "x": 10,
+      "y": 37,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -172,8 +172,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
-      "x": 33,
-      "y": 5,
+      "x": 37,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -200,15 +200,15 @@
       "dest_warp_id": 3
     },
     {
-      "x": 16,
-      "y": 38,
+      "x": 23,
+      "y": 63,
       "elevation": 0,
       "dest_map": "MAP_ROUTE104",
       "dest_warp_id": 4
     },
     {
-      "x": 17,
-      "y": 38,
+      "x": 24,
+      "y": 63,
       "elevation": 0,
       "dest_map": "MAP_ROUTE104",
       "dest_warp_id": 5

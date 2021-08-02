@@ -206,13 +206,58 @@ Route101_Movement_Unused2: @ 81EBDF7
 	walk_up
 	step_end
 
-Route101_EventScript_Youngster:: @ 81EBDFB
-	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
+Percorso1_EventScript_Youngster:: @ 81EBDFB
+	trainerbattle_single TRAINER_CALVIN_1, Percorso1_Text_CalvinIntro, Percorso1_Text_CalvinDefeated
+	msgbox Percorso1_Text_CalvinPostBattle, MSGBOX_DEFAULT
+	release
 	end
 
-Route101_EventScript_Boy:: @ 81EBE04
-	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_NPC
+Percorso1_EventScript_BugCatcher:: @ 81EBE04
+    trainerbattle_single TRAINER_RICK, Percorso1_Text_RickIntro, Percorso1_Text_RickDefeated
+	msgbox Percorso1_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 	end
+
+Percorso1_EventScript_Lass::
+    trainerbattle_single TRAINER_HALEY_1, Percorso1_Text_Haley1Intro, Percorso1_Text_Haley1Defeated
+	msgbox Percorso1_Text_Haley1PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Percorso1_Text_CalvinIntro:
+.string "Non vedevo l'ora di sfidare un\n"
+.string "principiante! In guardia!$"
+
+Percorso1_Text_CalvinDefeated:
+.string "Non te la cavi poi così male per\n"
+.string "essere un principiante!$"
+
+Percorso1_Text_CalvinPostBattle:
+.string "Ti consiglio di non evitare le\n"
+.string "lotte con gli allenatori. Lottando\l"
+.string "si accumula esperienza e si\l"
+.string "diventa sempre più forti.$"
+
+Percorso1_Text_RickIntro:
+.string "I Pokémon coleottero sono la mia\n"
+.string "più grande passione!$"
+
+Percorso1_Text_RickDefeated:
+.string "Oh no, i miei Pokémon!$"
+
+Percorso1_Text_RickPostBattle:
+.string "Sfidare gli altri allenatori è\n"
+.string "un'altra mia grande passione!$"
+
+Percorso1_Text_Haley1Intro:
+.string "Hey! Dove pensi di andare?\n"
+.string "Lottiamo!$"
+
+Percorso1_Text_Haley1Defeated:
+.string "Non pensavo di perdere contro un\n"
+.string "novellino!$"
+
+Percorso1_Text_Haley1PostBattle:
+.string "Ho imparato che non bisogna\n"
+.string "sottovalutare gli altri.$"
 
 Route101_EventScript_RouteSign:: @ 81EBE0D
 	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
@@ -299,6 +344,6 @@ Route101_Text_WildPokemonInTallGrass: @ 81EC04A
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_RouteSign: @ 81EC0C8
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "Percorso 1\n"
+	.string "{UP_ARROW} Timber$"
 
