@@ -54,13 +54,115 @@ PetalburgCity_WallysHouse_EventScript_PlayedWithWally:: @ 82042B6
 	release
 	end
 
-PetalburgCity_WallysHouse_EventScript_WallysMom:: @ 82042C0
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_HM03, PetalburgCity_WallysHouse_EventScript_ReceivedHM03Surf
-	msgbox PetalburgCity_WallysHouse_Text_WallyWasReallyHappy, MSGBOX_DEFAULT
-	release
+PetalburgCity_MoveDeletersHouse_EventScript_Mrnick:: @ 821EA0B
+	lockall
+	applymovement 2, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox PetalburgCity_MoveDeletersHouse_Text_ICanMakeMonForgetMove, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, PetalburgCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget
+	case NO, PetalburgCity_MoveDeletersHouse_EventScript_ComeAgain
+	releaseall
 	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget:: @ 821EA3B
+	msgbox PetalburgCity_MoveDeletersHouse_Text_WhichMonShouldForget, MSGBOX_DEFAULT
+	special ChoosePartyMon
+	waitstate
+	compare VAR_0x8004, 255
+	goto_if_eq PetalburgCity_MoveDeletersHouse_EventScript_ComeAgain
+	special IsSelectedMonEgg
+	compare VAR_RESULT, TRUE
+	goto_if_eq PetalburgCity_MoveDeletersHouse_EventScript_EggCantForgetMoves
+	special GetNumMovesSelectedMonHas
+	compare VAR_RESULT, 1
+	goto_if_eq PetalburgCity_MoveDeletersHouse_EventScript_MonOnlyKnowsOneMove
+	msgbox PetalburgCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
+	special MoveDeleterChooseMoveToForget
+	fadescreen FADE_FROM_BLACK
+	compare VAR_0x8005, MAX_MON_MOVES
+	goto_if_eq PetalburgCity_MoveDeletersHouse_EventScript_ChooseMonAndMoveToForget
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PetalburgCity_MoveDeletersHouse_Text_MonsMoveShouldBeForgotten, MSGBOX_YESNO
+	switch VAR_RESULT
+	case YES, PetalburgCity_MoveDeletersHouse_EventScript_TryForgetMove
+	case NO, PetalburgCity_MoveDeletersHouse_EventScript_ComeAgain
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_TryForgetMove:: @ 821EAB0
+	special IsLastMonThatKnowsSurf
+	compare VAR_RESULT, TRUE
+	goto_if_eq PetalburgCity_MoveDeletersHouse_EventScript_LastMonWithSurf
+	special MoveDeleterForgetMove
+	playfanfare MUS_MOVE_DELETED
+	waitfanfare
+	msgbox PetalburgCity_MoveDeletersHouse_Text_MonHasForgottenMove, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_MonOnlyKnowsOneMove:: @ 821EACF
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PetalburgCity_MoveDeletersHouse_Text_MonOnlyKnowsOneMove, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_EggCantForgetMoves:: @ 821EADC
+	msgbox PetalburgCity_MoveDeletersHouse_Text_EggCantForgetMoves, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_ComeAgain:: @ 821EAE6
+	msgbox PetalburgCity_MoveDeletersHouse_Text_ComeAgain, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_EventScript_LastMonWithSurf:: @ 821EAF0
+	special BufferMoveDeleterNicknameAndMove
+	msgbox PetalburgCity_MoveDeletersHouse_Text_CantForgetSurf, MSGBOX_DEFAULT
+	releaseall
+	end
+
+PetalburgCity_MoveDeletersHouse_Text_ICanMakeMonForgetMove: @ 821EAFD
+	.string "Ciao! Sì, sono io Mr Nick! Posso\n"
+	.string "far dimenticare qualunque mossa\l"
+	.string "ai tuoi Pokémon! Gratuitamente!\l"
+	.string "Vuoi che ti mostri le mie abilità??$"
+
+PetalburgCity_MoveDeletersHouse_Text_WhichMonShouldForget: @ 821EB65
+	.string "Quale POKéMON deve dimenticare\n"
+	.string "una mossa?$"
+
+PetalburgCity_MoveDeletersHouse_Text_WhichMoveShouldBeForgotten: @ 821EB89
+	.string "Quale mossa va dimenticata?$"
+
+PetalburgCity_MoveDeletersHouse_Text_MonOnlyKnowsOneMove: @ 821EBA9
+	.string "{STR_VAR_1} conosce soltanto una mossa\n"
+	.string "non può dimenticarla…$"
+
+PetalburgCity_MoveDeletersHouse_Text_MonsMoveShouldBeForgotten: @ 821EBDA
+	.string "Hm! {STR_VAR_1}'s {STR_VAR_2}?\n"
+	.string "Quale mossa dovrà essere\l"
+	.string "dimenticata?$"
+
+PetalburgCity_MoveDeletersHouse_Text_MonHasForgottenMove: @ 821EC06
+	.string "Ha funzionato!\p"
+	.string "{STR_VAR_1} ha dimenticato\n"
+	.string "{STR_VAR_2} completamente.$"
+
+PetalburgCity_MoveDeletersHouse_Text_ComeAgain: @ 821EC3F
+	.string "Torna di nuovo se hai delle mosse\n"
+	.string "da eliminare.$"
+
+PetalburgCity_MoveDeletersHouse_Text_EggCantForgetMoves: @ 821EC78
+	.string "Cosa?\n"
+	.string "Nessun UOVO conosce delle mosse.$"
+
+PetalburgCity_MoveDeletersHouse_Text_CantForgetSurf: @ 821EC9C
+	.string "Hm!\p"
+	.string "Il tuo {STR_VAR_1} non sembra voler\n"
+	.string "dimenticare SURF.$"
 
 PetalburgCity_WallysHouse_EventScript_ReceivedHM03Surf:: @ 82042D5
 	msgbox PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling, MSGBOX_DEFAULT
@@ -118,12 +220,6 @@ PetalburgCity_WallysHouse_Text_YouMetWallyInEverGrandeCity: @ 8204698
 	.string "He may have gotten healthy, but he\n"
 	.string "can't go somewhere far away like\l"
 	.string "that all by himself.$"
-
-PetalburgCity_WallysHouse_Text_WallyWasReallyHappy: @ 8204732
-	.string "WALLY was really happy when he told\n"
-	.string "us that he caught a POKéMON.\p"
-	.string "It's been ages since I've seen him\n"
-	.string "smile like that.$"
 
 PetalburgCity_WallysHouse_Text_WallyLeftWithoutTelling: @ 82047A7
 	.string "I want you to keep this a secret\n"

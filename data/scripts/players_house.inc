@@ -317,12 +317,80 @@ PlayersHouse_1F_EventScript_Mom:: @ 82929C5
 	goto_if_set FLAG_HAS_MATCH_CALL, PlayersHouse_1F_EventScript_TryRegisterMom
 	goto_if_set FLAG_RESCUED_BIRCH, PlayersHouse_1F_EventScript_MomHealsParty
 	compare VAR_TEMP_1, 1
-	goto_if_eq PlayersHouse_1F_EventScript_SeeYouHoney
-	compare VAR_LITTLEROOT_INTRO_STATE, 7
 	goto_if_eq PlayersHouse_1F_EventScript_DidYouMeetProfBirch
+	compare VAR_UNUSED_0x4083, 2
+	goto_if_eq PlayersHouse_1F_EventScript_0badgesmom
+	goto_if_set FLAG_BADGE01_GET, PlayersHouse_1F_EventScript_1badgemom
+	goto_if_set FLAG_BADGE02_GET, PlayersHouse_1F_EventScript_2badgemom
+	goto_if_set FLAG_BADGE03_GET, PlayersHouse_1F_EventScript_3badgemom
+	goto_if_set FLAG_BADGE04_GET, PlayersHouse_1F_EventScript_4badgemom
+	goto_if_set FLAG_BADGE05_GET, PlayersHouse_1F_EventScript_5badgemom
+	goto_if_set FLAG_BADGE06_GET, PlayersHouse_1F_EventScript_6badgemom
+	goto_if_set FLAG_BADGE07_GET, PlayersHouse_1F_EventScript_7badgemom
+	goto_if_set FLAG_BADGE08_GET, PlayersHouse_1F_EventScript_8badgemom
 	msgbox PlayersHouse_1F_Text_IsntItNiceInHere, MSGBOX_DEFAULT
 	release
 	end
+
+PlayersHouse_1F_EventScript_0badgesmom::
+msgbox PlayersHouse_1F_Text_0badgesmom MSGBOX_DEFAULT
+release
+end
+
+PlayersHouse_1F_EventScript_1badgemom::
+msgbox PlayersHouse_1F_Text_1badgesmom MSGBOX_DEFAULT
+release
+end
+
+PlayersHouse_1F_EventScript_2badgemom::
+msgbox PlayersHouse_1F_Text_2badgesmom MSGBOX_DEFAULT
+release
+end
+
+PlayersHouse_1F_EventScript_3badgemom::
+msgbox PlayersHouse_1F_Text_3badgesmom MSGBOX_DEFAULT
+release
+end
+
+PlayersHouse_1F_EventScript_4badgemom::
+msgbox PlayersHouse_1F_Text_4badgesmom MSGBOX_DEFAULT
+release
+end
+	
+PlayersHouse_1F_EventScript_5badgemom::
+msgbox PlayersHouse_1F_Text_5badgesmom MSGBOX_DEFAULT
+release
+end
+	
+PlayersHouse_1F_EventScript_6badgemom::
+msgbox PlayersHouse_1F_Text_6badgesmom MSGBOX_DEFAULT
+release
+end
+	
+PlayersHouse_1F_EventScript_7badgemom::
+msgbox PlayersHouse_1F_Text_7badgesmom MSGBOX_DEFAULT
+release
+end
+	
+PlayersHouse_1F_EventScript_8badgemom::
+lock
+goto_if_set FLAG_UNUSED_0x025, Eventscript_glnowchild
+msgbox PlayersHouse_1F_Text_8badgesmom MSGBOX_DEFAULT
+playfanfare MUS_OBTAIN_ITEM
+msgbox PlayerHouse_1F_Text_ObtainedMegaBracelet MSGBOX_DEFAULT
+giveitem ITEM_MEGA_BRACELET, 1
+waitfanfare
+closemessage
+msgbox PlayerHouse_1F_Text_idkMegaBracelet MSGBOX_DEFAULT
+release
+end
+
+Eventscript_glnowchild::
+lock
+faceplayer
+msgbox Text_glnowchild MSGBOX_DEFAULT
+release
+end
 
 PlayersHouse_1F_EventScript_DontPushYourselfTooHard:: @ 8292A0F
 	msgbox PlayersHouse_1F_Text_DontPushYourselfTooHard, MSGBOX_DEFAULT

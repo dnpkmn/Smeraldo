@@ -26,6 +26,118 @@ NavelRock_Top_OnResume: @ 8269151
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, NavelRock_Top_EventScript_TryRemoveHoOh
 	end
 
+NavelRock_EventScript_Kami::
+    lockall
+	faceplayer
+	playmoncry SPECIES_ARCEUS, 0
+	msgbox Text_CryArceus, MSGBOX_DEFAULT
+	waitmoncry
+    closemessage
+	release
+	end
+
+Text_CryArceus:
+.string "Arceus: Arceus!"
+
+NavelRock_EventScript_Kamifirsteventever::
+     lockall
+	 compare VAR_UNUSED_0x40A1, 0
+	 goto_if_gt EventScript_doneitrdy
+	 playbgm MUS_RG_ENCOUNTER_DEOXYS, TRUE
+	 applymovement OBJ_EVENT_ID_PLAYER, m_salilescale
+	 waitmovement 0
+	 msgbox primotestkami MSGBOX_DEFAULT
+	 closemessage
+	 msgbox secondotestkami MSGBOX_DEFAULT
+	 closemessage
+	 msgbox terzotestkami MSGBOX_DEFAULT
+	 closemessage
+	 delay_16
+	 delay_16
+     delay_16
+	 delay_16
+	 delay_16
+	 savebgm MUS_DUMMY
+     fadedefaultbgm
+	 warp MAP_INSIDE_OF_TRUCK, -1, 1, 2
+	 waitstate
+	 setvar VAR_UNUSED_0x40A1, 1
+	 setvar VAR_UNUSED_0x409D, 1
+	 releaseall
+	 end
+
+	 primotestkami:
+	 .string "???: {PLAYER}. E' una visione reale\n"
+	 .string "quella che vedi. Io sono Arceus,\l"
+	 .string "il creatore di tutto ciò che vive.$"
+
+     secondotestkami:
+	.string "Arceus: Un grave pericolo, incombe\n"
+	.string "su Ancar. Solo l'allenatore\l"
+	.string "della profezia può impedire che\l"
+	.string "il mondo venga distrutto da tale\l"
+	.string "minaccia. Quell'allenatore sei\l"
+	.string "tu, {PLAYER}. Trova la forza in\l"
+	.string "te stesso e nei tuoi Pokémon,\l"
+	.string "soltanto così potrai farcela.\l"
+	.string "Questa missione sarà di vitale\l"
+	.string "importanza per il tuo mondo.\l"
+	.string "Se tu dovessi fallire, allora, il\l"
+	.string "mondo non avrebbe più scampo.$"
+
+    terzotestkami:
+    .string "Arceus: Sono certo che riuscirai\n"
+	.string "nel tuo intento, figlio mio.$"
+
+	 m_salilescale:
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 walk_slow_up
+	 step_end
+	 
+Text_Kami:
+.string "Arceus: Arceus!$"
+
+EventScript_goup::
+lockall
+compare VAR_UNUSED_0x409D, 0
+goto_if_gt EventScript_doneitrdy
+msgbox Testo_proibito MSGBOX_DEFAULT
+closemessage
+applymovement OBJ_EVENT_ID_PLAYER, spostasu
+waitmovement 0
+release
+end
+
+Testo_proibito:
+.string "Una voce sussurra: Sali le scale.$"
+
+spostasu:
+walk_up
+step_end
+
+EventScript_doneitrdy::
+releaseall
+end
+
 NavelRock_Top_EventScript_TryRemoveHoOh:: @ 826915B
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_CAUGHT

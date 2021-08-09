@@ -58,7 +58,7 @@ LittlerootTown_MaysHouse_1F_OnFrame: @ 81F893A
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_Lite
+	map_script_2 VAR_UNUSED_0x404E, 0, LittlerootTown_MaysHouse_1F_EventScript_Lite
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
 
@@ -115,8 +115,8 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	setvar VAR_UNUSED_0x404E, 1
+	setvar VAR_UNUSED_0x4083, 1
 	setflag FLAG_UNUSED_0x020
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 0
 	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
 	releaseall
 	end
@@ -136,10 +136,10 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
 	
 	PlayersHouse_1F_Text_2:
     .string "Lisa: Quell'uomo è tuo PADRE! Non\n"
-	.string "parlare così di lui, Lux!$"
+	.string "parlare così di lui, Ron!$"
 
 	PlayersHouse_1F_Text_3: 
-	.string "Lux: Un padre non abbandona la sua\n"
+	.string "Ron: Un padre non abbandona la sua\n"
     .string "famiglia, almeno, non senza un\l"
 	.string "valido motivo!$"
 
@@ -153,21 +153,21 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
 	.string "anche senza lui al mio fianco.$"
 
 	PlayersHouse_1F_Text_5:
-	.string "Lux: Basta, non ne posso più dei\n"
+	.string "Ron: Basta, non ne posso più dei\n"
 	.string "tuoi discorsi. So quanto realmente\l"
 	.string "ti manca, mamma, anzi quanto CI\l"
 	.string "manca. Andrò a cercarlo in capo al\l"
     .string "mondo se necessario e gliene dirò\l"
 	.string "quattro a quel farabutto! Io e il\l"
-	.string "mio Shinx siamo pronti a sfidare\l"
+	.string "mio Aron siamo pronti a sfidare\l"
 	.string "chiunque, se necessario!$"
     
 	PlayersHouse_1F_Text_6:
-    .string "Lux: E tu chi diavolo saresti?\n"
+    .string "Ron: E tu chi diavolo saresti?\n"
 	.string "Hmph, non mi importa degli ospiti.$"
 
 	PlayersHouse_1F_Text_7:
-    .string "Lisa: Aspetta, Lux! Non andartene!$"
+    .string "Lisa: Aspetta, Ron! Non andartene!$"
 
 	PlayersHouse_1F_Text_8:
 	.string "Lisa: Accidenti..è davvero\n"
@@ -175,7 +175,7 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
 	.string "Oh, che sciocca! Non mi sono\n"
 	.string "presentata! Mi chiamo Lisa. Sono\l"
 	.string "mortificata per quanto successo.\l"
-	.string "Lux non è un cattivo ragazzo, è\l"
+	.string "Ron non è un cattivo ragazzo, è\l"
 	.string "solo che soffre molto la mancanza\l"
     .string "del padre, un allenatore che ha\l"
     .string "deciso di viaggiare con i suoi\l"
@@ -192,11 +192,11 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
     .string "Lisa: Devo chiederti un favore\n"
 	.string "{PLAYER}. Se sei intenzionato anche\l"
 	.string "tu a metterti in viaggio, bada tu\l"
-	.string "a Lux. Ho già capito che tu sei\l"
+	.string "a Ron. Ho già capito che tu sei\l"
 	.string "una persona in gamba. Sono\l"
 	.string "sicurissima che se controlli mio\l"
 	.string "figlio, non succederà mai nulla di\l"
-	.string "spiacevole al mio Lux.$"
+	.string "spiacevole al mio Ron.$"
     
     LittlerootTown_MaysHouse_1F_Movement_puntoescl2:
     emote_exclamation_mark
@@ -257,7 +257,7 @@ LittlerootTown_MaysHouse_1F_EventScript_Lite::
 
 	PlayersHouse_1F_Text_lisachat:
     .string "Lisa: {PLAYER}, per cortesia, bada\n"
-	.string "tu al mio Lux. Conto su di te.$"
+	.string "tu al mio Ron. Conto su di te.$"
 	
     LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock:: @ 81F8964
 	lockall

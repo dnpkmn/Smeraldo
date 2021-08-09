@@ -67,15 +67,16 @@ PetalburgCity_Mart_EventScript_Man:: @ 8207DE8
 	end
 
 PetalburgCity_Mart_Text_WeakWillGrowStronger: @ 8207DF1
-	.string "Even if a POKéMON is weak now,\n"
-	.string "it will grow stronger.\p"
-	.string "The most important thing is love!\n"
-	.string "Love for your POKéMON!$"
+	.string "Le Superpozioni, ripristinano gran\n"
+	.string "parte se non tutti i PS dei tuoi\l"
+	.string "Pokémon, quando sei un allenatore\l"
+	.string "principiante!$"
 
 PetalburgCity_Mart_Text_RepelIsUseful: @ 8207E60
-	.string "Do you use REPEL?\n"
-	.string "It keeps POKéMON away, so it's\l"
-	.string "useful when you're in a hurry.$"
+	.string "Le Mega Ball costano un pò di più\n"
+	.string "rispetto alle classiche Poké Ball\l"
+	.string "ma sono un ottimo investimento,\l"
+	.string "credimi!$"
 
 PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou: @ 8207EB0
 	.string "Do you have any ANTIDOTES with\n"

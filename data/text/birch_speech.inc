@@ -1,6 +1,6 @@
 gText_Birch_Welcome:: @ 82C897B
-	.string "Ciao! Scusami per averti fatto,\p"
-	.string "aspettare! Ti do il benvenuto nel\n"
+	.string "Ciao! Scusami per averti fatto,\n"
+	.string "aspettare! Ti do il benvenuto nel\l"
 	.string "mondo dei Pokémon! Il mio nome è\l"
 	.string "SHERMAN! Eppure, tutti mi chiamano\l"
 	.string "Professore Pokémon o Prof.Sherman!\p"

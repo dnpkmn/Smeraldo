@@ -241,25 +241,98 @@ PetalburgWoods_Movement_AquaApproachPlayer: @ 822E20E
 	walk_down
 	step_end
 
-PetalburgWoods_EventScript_Boy1:: @ 822E210
-	msgbox PetalburgWoods_Text_StayOutOfTallGrass, MSGBOX_NPC
-	end
+PetalburgWoods_EventScript_Elliot_1:: @ 822E219
+trainerbattle_single TRAINER_ELLIOT_1, Elliot1_Text_Intro, Elliot1_Text_Defeat
+msgbox Elliot1_Text_postbattle, MSGBOX_AUTOCLOSE
+end
 
-PetalburgWoods_EventScript_Boy2:: @ 822E219
-	msgbox PetalburgWoods_Text_HiddenItemsExplanation, MSGBOX_NPC
-	end
+PetalburgWoods_EventScript_Claude:: @ 822E219
+trainerbattle_single TRAINER_CLAUDE, Claude_Text_Intro, Claude_Text_Defeat
+msgbox Claude_Text_postbattle, MSGBOX_AUTOCLOSE
+end
 
-PetalburgWoods_EventScript_Girl:: @ 822E222
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, PetalburgWoods_EventScript_ExplainMiracleSeed
-	msgbox PetalburgWoods_Text_TryUsingThisItem, MSGBOX_DEFAULT
-	giveitem ITEM_MIRACLE_SEED
-	compare VAR_RESULT, FALSE
-	goto_if_eq Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_MIRACLE_SEED
-	release
-	end
+PetalburgWoods_EventScript_James_1:: @ 822E219
+trainerbattle_single TRAINER_JAMES_1, James1_Text_Intro, James1_Text_Defeat
+msgbox James1_Text_postbattle, MSGBOX_AUTOCLOSE
+end
+
+PetalburgWoods_EventScript_James_2:: @ 822E219
+trainerbattle_single TRAINER_JAMES_2, James2_Text_Intro, James2_Text_Defeat
+msgbox James1_Text_postbattle, MSGBOX_AUTOCLOSE
+end
+
+Elliot1_Text_Intro:
+.string "E' tutto il giorno che pesco!\n"
+.string "Speriamo ne valga la pena!$"
+
+Elliot1_Text_Defeat:
+.string "Uff, ne varrà veramente la pena?$"
+
+Elliot1_Text_postbattle:
+.string "Perché non peschiamo insieme? E'\n"
+.string "una buona zona per pescare.$"
+
+Claude_Text_Intro:
+.string "Pescare è una dote innata!$"
+
+Claude_Text_Defeat:
+.string "Wow! Anche lottare lo è!$"
+
+Claude_Text_postbattle:
+.string "Dici che è pericoloso, pescare nel\n"
+.string "Bosco Driade?$"
+
+James1_Text_Intro:
+.string "Questo Bosco è pieno di insidie!$"
+
+James1_Text_Defeat: 
+.string "Eheheh, tu sei un'insidia!$"
+
+James1_Text_postbattle:
+.string "Bisogna stare attenti ai Pokémon\n"
+.string "selvatici del Bosco.$"
+
+James2_Text_Intro:
+.string "Sai dirmi dove siamo?$"
+
+James2_Text_Defeat:
+.string "Riconosco le tue capacità!$"
+
+James2_Text_postbattle:
+.string "Accidenti.. forse mi sarò perso?$"
+
+PetalburgWoods_EventScript_Henry:: @ 822E222
+trainerbattle_single TRAINER_HENRY, Henry_Text_Intro, HenryText_Defeat
+msgbox Henry_Text_postbattle, MSGBOX_AUTOCLOSE
+end
+
+PetalburgWoods_EventScript_Kent:: @ 822E222
+trainerbattle_single TRAINER_KENT, Kent_Text_Intro, KentText_Defeat
+msgbox Kent_Text_postbattle, MSGBOX_AUTOCLOSE
+end
+
+Kent_Text_Intro:
+.string "Mi sento forte! Ho catturato tante\n"
+.string "specie di Pokémon!$"
+
+KentText_Defeat:
+.string "Ugh..devo migliorare la qualità\n"
+.string "più che la quantità..$"
+
+Kent_Text_postbattle:
+.string "Allenare più specie è sicuramente\n"
+.string "più difficile, ma credo ripaghi\l"
+.string "alla fine.$"
+
+Henry_Text_Intro:
+.string "Pesco con il mio Amo Vecchio!\n"
+.string "Vediamone la qualità!$"
+
+HenryText_Defeat:
+.string "Accidenti, devo utilizzare un Amo\nmigliore..$"
+
+Henry_Text_postbattle:
+.string "Ci sono Ami migliori del mio!$"
 
 PetalburgWoods_EventScript_ExplainMiracleSeed:: @ 822E251
 	msgbox PetalburgWoods_Text_MiracleSeedExplanation, MSGBOX_DEFAULT
@@ -279,48 +352,21 @@ PetalburgWoods_EventScript_Lyle:: @ 822E26D
 	msgbox PetalburgWoods_Text_ImOutOfPokeBalls, MSGBOX_AUTOCLOSE
 	end
 
-PetalburgWoods_EventScript_James:: @ 822E284
-	trainerbattle_single TRAINER_JAMES_1, PetalburgWoods_Text_InstantlyPopularWithBugPokemon, PetalburgWoods_Text_CantBePopularIfILose, PetalburgWoods_EventScript_TryRegisterJames
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	compare VAR_RESULT, TRUE
-	goto_if_eq PetalburgWoods_EventScript_JamesRematch
-	setvar VAR_0x8004, TRAINER_JAMES_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	compare VAR_RESULT, FALSE
-	goto_if_eq PetalburgWoods_EventScript_TryRegisterJames2
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
-	release
-	end
+PetalburgWoods_EventScript_Jonah:: @ 822E284
+trainerbattle_single TRAINER_JONAH, PetalburgWoods_Text_JonahIntro, PetalburgWoods_Text_JonahDefeat
+msgbox PetalburgWoods_Text_JonahPostBattle, MSGBOX_AUTOCLOSE
+end
 
-PetalburgWoods_EventScript_TryRegisterJames:: @ 822E2C5
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames
-	release
-	end
+PetalburgWoods_Text_JonahIntro:
+.string "Umh, sei abboccato alla mia esca!\n"
+.string "Lottiamo!$"
 
-PetalburgWoods_EventScript_RegisterJames:: @ 822E2D6
-	msgbox PetalburgWoods_Text_IWantRematch1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
-	release
-	end
+PetalburgWoods_Text_JonahDefeat:
+.string "Umh, e così ho beccato un pesce\n"
+.string "grosso?$"
 
-PetalburgWoods_EventScript_TryRegisterJames2:: @ 822E2EF
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames2
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
-	release
-	end
-
-PetalburgWoods_EventScript_RegisterJames2:: @ 822E302
-	msgbox PetalburgWoods_Text_IWantRematch2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
-	release
-	end
-
-PetalburgWoods_EventScript_JamesRematch:: @ 822E31B
-	trainerbattle_rematch TRAINER_JAMES_1, PetalburgWoods_Text_MyPokemonHaveGrown, PetalburgWoods_Text_CantBePopularIfLose
-	msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
-	end
+PetalburgWoods_Text_JonahPostBattle:
+.string "Umh, a volte non abbocca nulla!$"
 
 PetalburgWoods_Text_NotAOneToBeFound: @ 822E332
 	.string "Hmmm…\n"
@@ -478,3 +524,228 @@ PetalburgWoods_Text_TrainerTipsPP: @ 822ED07
 	.string "If a POKéMON runs out of PP, it must be\n"
 	.string "taken to a POKéMON CENTER.$"
 
+EventScript_SxBoscodriade::
+lockall
+compare VAR_UNUSED_0x40B8, 0
+goto_if_gt EventScript_salvadanaiodone
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER m1_boscodriadesx
+waitmovement 0
+closemessage
+msgbox chat1boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat2boscodriade, MSGBOX_DEFAULT
+closemessage
+applymovement 4, m2_boscodriade
+applymovement 14, m2_boscodriade
+waitmovement 0
+msgbox chat3boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat4boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat5boscodriade, MSGBOX_DEFAULT
+closemessage
+applymovement OBJ_EVENT_ID_PLAYER, m3_boscodriade
+applymovement 4, mfaceright_boscodriade
+applymovement 14, m5_boscodriade
+waitmovement 0
+trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, Boscodriade_Text_defeat
+msgbox chat7boscodriade, MSGBOX_DEFAULT
+closemessage
+fadescreen 1
+removeobject 4
+fadescreen 0
+applymovement 14, m4_boscodriade
+applymovement OBJ_EVENT_ID_PLAYER mfaceright_boscodriade
+waitmovement 0
+msgbox grazietienisoldi, MSGBOX_DEFAULT
+playfanfare MUS_OBTAIN_B_POINTS
+addmoney 3000, 0x00
+waitfanfare
+closemessage
+msgbox grazietienisoldi2, MSGBOX_DEFAULT
+closemessage
+applymovement 14, m6_boscodriade
+applymovement OBJ_EVENT_ID_PLAYER, m7_boscodriade
+waitmovement 0
+removeobject 14
+setflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+savebgm MUS_DUMMY
+special HealPlayerParty
+setvar VAR_UNUSED_0x40B8, 1
+fadedefaultbgm
+releaseall
+end
+
+EventScript_DxBoscodriade::
+lockall
+compare VAR_UNUSED_0x40B8, 0
+goto_if_gt EventScript_salvadanaiodone
+playbgm MUS_ENCOUNTER_AQUA, TRUE
+applymovement OBJ_EVENT_ID_PLAYER m1_boscodriadedx
+waitmovement 0
+closemessage
+msgbox chat1boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat2boscodriade, MSGBOX_DEFAULT
+closemessage
+applymovement 4, m2_boscodriade
+applymovement 14, m2_boscodriade
+waitmovement 0
+msgbox chat3boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat4boscodriade, MSGBOX_DEFAULT
+closemessage
+msgbox chat5boscodriade, MSGBOX_DEFAULT
+closemessage
+applymovement OBJ_EVENT_ID_PLAYER, m3_boscodriade
+applymovement 4, mfaceright_boscodriade
+applymovement 14, m5_boscodriade
+waitmovement 0
+trainerbattle_no_intro TRAINER_GRUNT_RUSTURF_TUNNEL, Boscodriade_Text_defeat
+msgbox chat7boscodriade, MSGBOX_DEFAULT
+closemessage
+fadescreen 1
+removeobject 4
+fadescreen 0
+applymovement 14, m4_boscodriade
+applymovement OBJ_EVENT_ID_PLAYER mfaceright_boscodriade
+waitmovement 0
+msgbox grazietienisoldi, MSGBOX_DEFAULT
+playfanfare MUS_OBTAIN_B_POINTS
+addmoney 3000, 0x00
+waitfanfare
+closemessage
+msgbox grazietienisoldi2, MSGBOX_DEFAULT
+closemessage
+applymovement 14, m6_boscodriade
+applymovement OBJ_EVENT_ID_PLAYER, m7_boscodriade
+waitmovement 0
+removeobject 14
+setflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+savebgm MUS_DUMMY
+special HealPlayerParty
+setvar VAR_UNUSED_0x40B8, 1
+fadedefaultbgm
+releaseall
+end
+
+mfaceright_boscodriade:
+face_right
+step_end
+
+grazietienisoldi:
+.string "Richard: Grazie! Grazie! Grazie!\n"
+.string "Non volevo dare il salvadanaio a\l"
+.string "quei farabutti del Team Sakkara!\l"
+.string "Sembrano molto pericolosi, bisogna\l"
+.string "fare attenzione, probabilmente è\l"
+.string "di loro che parlava la TV. Io sono\l"
+.string "ricco però per principio non do\l"
+.string "i miei soldi a dei criminali.\l"
+.string "Per avermi salvato, voglio però\l"
+.string "sdebitarmi e non avendo nulla con\l"
+.string "me, ti darò del denaro! Non fare\l"
+.string "complimenti su!$"
+
+grazietienisoldi2:
+.string "Richard: Ho altri Salvadanai, però\n"
+.string "a casa mia, a Wolf. Se passi a\l"
+.string "trovarmi te ne regalerò uno!\l"
+.string "Grazie ancora!$"
+
+Boscodriade_Text_defeat:
+.string "Recluta: Ho perso?! Che incubo!$"
+
+chat1boscodriade:
+.string "???: E così, volete i miei soldi\n"
+.string "eh? Non vedi che non ho un Pokémon\l"
+.string "con me? Non posso combattere!$"
+
+chat2boscodriade:
+.string "Team Sakkara: Non mi interessa.\n"
+.string "Tanto meglio per me, così potrò\l"
+.string "strapparti via quel Salvadanaio\l"
+.string "senza alcun problema.$"
+
+chat3boscodriade:
+.string "Team Sakkara: Chi sei? Ah.. sei\n"
+.string "solo un ragazzino. Credo tu sia in\l"
+.string "tempo a cambiare strada, pivello.$"
+
+chat4boscodriade:
+.string "???: Hey ragazzino, mi chiamo\n"
+.string "Richard, per favore, se hai un\l"
+.string "Pokémon con te, ti chiedo di\l"
+.string "aiutarmi! Se necessario, sono\l"
+.string "disposto a pagarti! I soldi non mi\l"
+.string "mancano!$"
+
+chat5boscodriade:
+.string "Team Sakkara: Vorresti mettere in\n"
+.string "pericolo un ragazzino? Ahah, fai\l"
+.string "pure, fatti avanti e prenderò\l"
+.string "anche i tuoi Pokémon! Il Team\l"
+.string "Sakkara è il Team per eccellenza,\l"
+.string "non avete a che fare con quegli\l"
+.string "smidollati degli altri Team.\l"
+.string "Ti ridurrò a brandelli, cimice!$"
+
+chat7boscodriade:
+.string "Recluta: Sono solo una Recluta, ma\n"
+.string "non pensavo di poter perdere qui!\l"
+.string "E va bene, tieniti pure i tuoi\l"
+.string "soldi, tanto il Team Sakkara è\l"
+.string "destinato a farne un mare!$"
+
+m1_boscodriadedx:
+walk_left
+walk_up
+emote_question_mark
+step_end
+
+m1_boscodriadesx:
+walk_up
+emote_question_mark
+step_end
+
+m2_boscodriade:
+face_down
+emote_exclamation_mark
+step_end
+
+m3_boscodriade:
+walk_up
+walk_left
+walk_up
+face_left
+step_end
+
+m4_boscodriade:
+walk_left
+step_end
+
+m5_boscodriade:
+face_left
+step_end
+
+m6_boscodriade:
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+walk_slow_up
+step_end
+
+m7_boscodriade:
+face_up
+step_end
+
+EventScript_salvadanaiodone::
+releaseall
+end

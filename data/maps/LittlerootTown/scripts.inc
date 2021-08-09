@@ -890,7 +890,7 @@ LittlerootTown_Movement_MomExitThroughDoor: @ 81E863B
 
 LittlerootTown_Text_OurNewHomeLetsGoInside: @ 81E86BC
 	.string "Mamma: {PLAYER}, tesoro!\p"
-	.string "Come vedi, questa è BELL\n"
+	.string "Come vedi, questa è BELL.\n"
 	.string "Spero ti piaccia.\n"
 	.string "Perché non entriamo in casa?\p"
 	.string "La tua stanza è di sopra.\n"
@@ -1013,7 +1013,7 @@ LittlerootTown_Text_PlayersHouse: @ 81E8D83
 	.string "Casa di {PLAYER}'$"
 
 LittlerootTown_Text_ProfBirchsHouse: @ 81E8D8E
-	.string "Casa di Lux$"
+	.string "Casa di Ron$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab: @ 81E8DA2
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"

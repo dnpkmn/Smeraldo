@@ -35,7 +35,7 @@ msgbox Text_rival3, MSGBOX_DEFAULT
 addobject 8
 setobjectxy 8, 46 11
 setobjectmovementtype 8, MOVEMENT_TYPE_FACE_RIGHT
-msgbox Text_Tia, MSGBOX_DEFAULT
+msgbox Text_Gile, MSGBOX_DEFAULT
 closemessage
 applymovement 7, move_interrogativo
 applymovement OBJ_EVENT_ID_PLAYER, move_interrogativo
@@ -68,6 +68,7 @@ msgbox Text_final MSGBOX_DEFAULT
 closemessage
 applymovement 7, move_rivalending
 applymovement OBJ_EVENT_ID_PLAYER, move_faceleft
+waitmovement 0
 applymovement 8, move_sususxsx
 waitmovement 0
 removeobject 7
@@ -97,7 +98,7 @@ releaseall
 end
 
 Text_okciao:
-.string "Tia: Ti ho rubato anche troppo\n"
+.string "Gile: Ti ho rubato anche troppo\n"
 .string "tempo {PLAYER}, buona fortuna per\l"
 .string "il tuo viaggio!$"
 
@@ -106,7 +107,7 @@ Text_Obtainedbox:
 .string "dolci!$"
 
 Text_finalchat:
-.string "Tia: Che maleducato! La prossima\n"
+.string "Gile: Che maleducato! La prossima\n"
 .string "volta, io e il mio Goomy gli\l"
 .string "daremo una bella lezione! In ogni\l"
 .string "caso, {PLAYER}, ti consiglio di\l"
@@ -132,7 +133,7 @@ walk_left
 step_end
 
 Text_final:
-.string "Lux: Non mi interessa nulla di\n"
+.string "Ron: Non mi interessa nulla di\n"
 .string "chi sia questo Sherman. Però ho\l"
 .string "sentito che c'è un Laboratorio\l"
 .string "Pokémon proprio a Mascar, la\l"
@@ -169,7 +170,7 @@ face_down
 step_end
 
 Text_Rivalvstia:
-.string "Lux: Ma quanto parli! Non avevo\n"
+.string "Ron: Ma quanto parli! Non avevo\n"
 .string "capito intendessi Camilla, di\l"
 .string "Sinnoh. E' ovvio che sappiamo chi\l"
 .string "sia, ma è impossibile che lei\l"
@@ -177,16 +178,16 @@ Text_Rivalvstia:
 .string "Ho già perso anche troppo tempo!$"
 
 Text_tia4:
-.string "Tia: Certo che voi due, non sapete\n"
+.string "Gile: Certo che voi due, non sapete\n"
 .string "proprio un bel niente! Il Prof.\l"
 .string "Sherman è il più grande studioso\l"
 .string "della regione di Ancar! Conosce le\l"
 .string "vostre famiglie e mi ha parlato di\l"
 .string "voi. Tu devi essere {PLAYER}, tu\l"
-.string "invece sei Lux.$"
+.string "invece sei Ron.$"
 
 Text_tia3:
-.string "Tia: Ma come?! Non ditemi che non\n"
+.string "Gile: Ma come?! Non ditemi che non\n"
 .string "conoscete Camilla, la campionessa\l"
 .string "di Sinnoh!? E' una delle più forti\l"
 .string "allenatrici al MONDO! Spero di\l"
@@ -201,7 +202,7 @@ Text_tia3:
 .string "sede il suo laboratorio.$"
 
 Text_tia2:
-.string "???: Mi chiamo Tia e ho assistito\n"
+.string "???: Mi chiamo Gile e ho assistito\n"
 .string "alla vostra lotta! Devo dire che\l"
 .string "siete in gamba! Anche io ho\l"
 .string "iniziato ad allevare i Pokémon da\l"
@@ -209,17 +210,17 @@ Text_tia2:
 .string "diventare forte come il mio\l"
 .string "idolo, Camy!$"
 
-Text_Tia:
+Text_Gile:
 .string "???: Complimenti per la lotta,\n"
 .string "ragazzi!$"
 
 Percorso3_Text_RivalDefeat:
-.string "Lux: Io e il mio Shinx, abbiamo\nperso?..$"
+.string "Ron: Io e il mio Aron, abbiamo\nperso?..$"
 
 Text_rival3:
-.string "Lux: Devo ammettere, che non mi\n"
+.string "Ron: Devo ammettere, che non mi\n"
 .string "aspettavo di perdere. Se ho perso,\l"
-.string "non è colpa del mio Shinx,\l"
+.string "non è colpa del mio Aron,\l"
 .string "lui ha dato tutto se stesso. E'\l"
 .string "evidente che devo catturare altre\l"
 .string "specie di Pokémon se voglio\l"
@@ -231,14 +232,14 @@ Text_rival3:
 .string "prenderò la mia rivincita!$" 
 
 Text_rival2:
-.string "Lux: Non ho ancora capito chi tu\n"
+.string "Ron: Non ho ancora capito chi tu\n"
 .string "sia, ma sembra tu abbia la mia\l"
 .string "stessa età. Ho capito ormai, tu\l"
 .string "devi far parte della famiglia che\l"
 .string "si è trasferita come noi, a Bell.\l"
 .string "Da quel che vedo, sembri un\l"
 .string "allenatore, ma lo sono anche io.\l"
-.string "Il mio Pokémon, Shinx, è l'amico\l"
+.string "Il mio Pokémon, Aron, è l'amico\l"
 .string "migliore che potessi desiderare.\l"
 .string "Dato che hai origliato, saprai che\l"
 .string "voglio incontrare mio padre.\l"
@@ -258,7 +259,7 @@ walk_left
 step_end
 
 Text_rival1:
-.string "Lux: Ehy tu!$"
+.string "Ron: Ehy tu!$"
 
 move_faceright:
 face_right
@@ -294,7 +295,7 @@ msgbox Text_rival3, MSGBOX_DEFAULT
 addobject 8
 setobjectxy 8, 46 10
 setobjectmovementtype 8, MOVEMENT_TYPE_FACE_RIGHT
-msgbox Text_Tia, MSGBOX_DEFAULT
+msgbox Text_Gile, MSGBOX_DEFAULT
 closemessage
 applymovement 7, move_interrogativo
 applymovement OBJ_EVENT_ID_PLAYER, move_interrogativo
@@ -327,6 +328,7 @@ msgbox Text_final MSGBOX_DEFAULT
 closemessage
 applymovement 7, move_rivalending
 applymovement OBJ_EVENT_ID_PLAYER, move_faceleft
+waitmovement 0
 applymovement 8, move_downleftleftleft
 waitmovement 0
 removeobject 7
@@ -363,6 +365,10 @@ walk_left
 walk_left
 walk_left
 walk_left
+walk_left
+walk_left
+walk_left
+emote_exclamation_mark
 step_end
 
 Percorso3_EventScript_Ivan::

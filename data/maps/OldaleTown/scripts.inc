@@ -231,7 +231,7 @@ Text_seinuovo:
 .string "però averne di più, potrebbe\l"
 .string "aiutarti a comprare tutto ciò che\l"
 .string "ti occorre, nelle lotte Pokémon!\l"
-.string "Voglio regalarti questo strumento\l\l"
+.string "Voglio regalarti questo strumento\l"
 .string "incredibile che ho usato quando\l"
 .string "ero più giovane. A me non serve\l"
 .string "più, ormai. Ohohohoh!$"
